@@ -31,12 +31,13 @@
     - 함수의 출력
     - 함수를 테스트하기
     
-1. 조건문 반복문
+1. 프로그램 제어문
     - 조건문 if
     - 조건문을 작성하는 요령
     - 다중 조건 switch
     - 반복문 for
     - 반복문 작성 예시
+    - 에러 처리
 
 ## tidy한 방법으로 데이터 다루기
 1. 데이터 시각화 ggplot2
@@ -99,11 +100,31 @@
 
 1. list 자료형과 반복 purrr
     - list 자료형 소개
-    - 
+    - list 들에 함수를 적용하는 map
+    - 함수 인자 위치에 바로 함수 작성하기
+    - 여러 인자를 받는 map2, pmap
+    - map 응용 사례
+    
 1. tidy하게 모델 데이터 다루기 bloom
+    - R에서 제공하는 모델 데이터 lm
+    - bloom 패키지로 tidy하게 바꾸기 1. tidy
+    - bloom 패키지로 tidy하게 바꾸기 2. glance
+    - bloom 패키지로 tidy하게 바꾸기 3. augment
+    - modelr 패키지로 추정값 만들기
+    - modelr 패키지로 잔차 계산하기
+    
 1. 리스트 컬럼 다루기
-1. 고속 데이터 처리 data.table
+    - lm 결과를 데이터셋에 합치기
+    - 리스트로 구성된 컬럼 소개
+    - 리스트 컬럼 다루기 nest, map
+    - 리스트 컬럼 해제하기 unest
+    
 1. 데이터 베이스 DBI + dplyr
+    - 환경 설정하기
+    - 데이터 베이스 연결 dbConnect
+    - sql 쿼리 사용하기 dbGetQuery
+    - dplyr 문법으로 DB 탐색
+    - src_dbi 일때 조심해야 할 점
   
 ## 시계열 데이터 deep dive
 
