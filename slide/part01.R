@@ -6,21 +6,21 @@ library(dplyr)
 library(purrr)
 library(stringr)
 
-img_1 <- "http://swiftbud.com/wp-content/uploads/2015/01/Best-Websites-to-Learn-programming-languages-Online-for-free.png"
-download.file(img_1, destfile = "src/img_1.png", mode = 'wb')
-
-read_pptx("slide/style.pptx") %>% 
-  remove_slide(1) %>% 
-  add_slide(layout = "제목", master = "Office 테마") %>%
-  ph_with_text(type = "body", str = "01", index = 7) %>%
-  ph_with_text(type = "title", str = "강의 소개") %>% 
-  ph_with_text(type = "body", str = "R을 배워야 하는 이유", index = 11) %>% 
-  
-  add_slide(layout = "끝", master = "Office 테마") %>%
-  ph_with_text(type = "body", str = "01", index = 4) %>% 
-  ph_with_text(type = "body", str = "강의 소개", index = 6) %>%
-  ph_with_text(type = "title", str = "끝") %>% 
-  print(target = "slide/chapter00_01.pptx")
+# img_1 <- "http://swiftbud.com/wp-content/uploads/2015/01/Best-Websites-to-Learn-programming-languages-Online-for-free.png"
+# download.file(img_1, destfile = "src/img_1.png", mode = 'wb')
+# 
+# read_pptx("slide/style.pptx") %>% 
+#   remove_slide(1) %>% 
+#   add_slide(layout = "제목", master = "Office 테마") %>%
+#   ph_with_text(type = "body", str = "01", index = 7) %>%
+#   ph_with_text(type = "title", str = "강의 소개") %>% 
+#   ph_with_text(type = "body", str = "R을 배워야 하는 이유", index = 11) %>% 
+#   
+#   add_slide(layout = "끝", master = "Office 테마") %>%
+#   ph_with_text(type = "body", str = "01", index = 4) %>% 
+#   ph_with_text(type = "body", str = "강의 소개", index = 6) %>%
+#   ph_with_text(type = "title", str = "끝") %>% 
+#   print(target = "slide/chapter00_01.pptx")
 
 clip <- c(
   "R 언어 및 Rstudio 설치",
@@ -58,9 +58,10 @@ templ04 <- tibble(chp = "반복과 조건", chp_no = "04", clip = clip) %>%
   mutate(clip_no = sprintf("0%d", 1:length(clip)))
 
 clip <- c(
+  "패키지를 고르는 법",
   "검색하는 법",
   "질문하는 법")
-templ05 <- tibble(chp = "도움을 받는 방법", chp_no = "05", clip = clip) %>%
+templ05 <- tibble(chp = "문제를 해결하는 법", chp_no = "05", clip = clip) %>%
   mutate(clip_no = sprintf("0%d", 1:length(clip)))
 
 templ <- bind_rows(
