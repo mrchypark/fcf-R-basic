@@ -1,0 +1,36 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+class: title-slide
+
+#### 00
+### 강의 소개
+## 말하고자 하는 글자가 넘어가면 어떻게 되나 지금부터 시작
+
+---
+
+class: chapter-slide
+
+#### 00
+### 이건 중간 슬라이드 입니다.
+
+---
+
+class: content-slide
+
+#### 00
+### 챕터 명
+## 스라이드의 타이틀

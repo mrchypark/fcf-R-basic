@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+CJK+KR');
+
+html, body, h1, h2, h3, h4, h5, h6, li, p {font-family: 'Noto Sans CJK KR', sans-serif;}
+
+.remark-slide-number {
+  display: none;
+}
+
+.title-slide {
+  background-image: url(https://user-images.githubusercontent.com/6179259/52895090-97351680-31f8-11e9-9098-4ab4feb0dfda.png);
+  background-size: cover;
+}
+
+.title-slide h4 {
+  text-shadow: none;
+  color: #FFFFFF;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 6.2em;
+  margin-bottom: 0em;
+  margin-left: 3.3em;
+}
+
+.title-slide h3 {
+  text-shadow: none;
+  color: #F0234B;
+  font-size: 1.8em;
+  font-weight: bolder;
+  margin-top: -0.1em;
+  margin-bottom: 0em;
+  margin-left: -0.7em;
+}
+
+.title-slide h2 {
+  text-shadow: none;
+  color: #FFFFFF;
+  font-size: 4em;
+  font-weight: bold;
+  margin-top: -0.1em;
+  margin-left: 0.1em;
+}
+
+
+.chapter-slide {
+  background-image: url(https://user-images.githubusercontent.com/6179259/52895531-247b6980-31ff-11e9-9d91-616d21b39a78.png);
+  background-size: cover;
+}
+
+.content-slide {
+  background-image: url(https://user-images.githubusercontent.com/6179259/52895531-247b6980-31ff-11e9-9d91-616d21b39a78.png);
+  background-size: cover;
+}
