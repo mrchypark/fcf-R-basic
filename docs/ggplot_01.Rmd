@@ -13,9 +13,7 @@ output:
 
 ```{r load_setup, child="setup.Rmd"}
 ```
-
-```{r include=FALSE}
-library(ggplot2)
+```{r load_setup, child="ggplot_pack.Rmd"}
 ```
 
 class: title-slide
