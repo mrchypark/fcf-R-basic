@@ -1,0 +1,188 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+```{r include=FALSE}
+library(ggplot2)
+```
+
+class: title-slide
+
+#### 01
+### 차트 그리기
+## 그림을 그려 데이터 파악하기
+
+---
+class: blank-slide center middle
+
+### 그림을 그리는 ggplot2
+
+<img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/ggplot2.png?raw=true" width=30%>
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 데이터 패키지 설치
+
+[krbudget2019](https://github.com/mrchypark/krbudget2019) 패키지는 국회의 19년 예산안을 제공하는 데이터 패키지입니다.
+
+한국경제의 [뉴스레빗](http://newslabit.hankyung.com/article/201812187348G)에서 데이터를 정리하였습니다.
+
+```r
+install.packages("remotes")
+remotes::install_github("mrchypark/krbudget2019")
+```
+
+--
+
+아래 코드가 동작하면 잘 설치된 것입니다.
+
+```{r}
+library(krbudget2019)
+```
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+좋은 패키지를 만들어 공개해준 것에 감사의 의미로 `star`를 눌러줍시다.
+
+<https://github.com/mrchypark/krbudget2019>
+
+![](https://user-images.githubusercontent.com/6179259/52909318-1f372100-32ca-11e9-85b7-b6eed2e277b7.png)
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 2019년 대한민국 예산 데이터
+
+`data()` 함수는 패키지에 내장되어 있는 데이터를 사용할 수 있게 해줍니다.
+
+```{r}
+library(krbudget2019)
+data(krbg)
+```
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 코드북
+
+```{r echo=FALSE}
+krbg %>% 
+  glimpse()
+```
+
+---
+
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 퀴즈!  
+
+예산안 금액(`금액_원안`)이 클수록 확정안의 변경(`증감액`)이 크게 일어났을까?
+
+--
+
+## 실행해보기!
+
+아래 코드를 각자 콘솔에서 실행시켜보세요. 오탈자, 대소문자, 괄호 등을 신경써서 그대로 입력해야 합니다!
+
+```r
+library(ggplot2)
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y=`증감액`))
+```
+
+---
+
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+```r
+library(ggplot2)
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y=`증감액`))
+```
+```{r echo=FALSE}
+library(ggplot2)
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y=`증감액`))
+```
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 동작 설명
+
+1. `ggplot()` 함수로 차트를 초기화
+1. `geom_*()` 함수로 레이어를 추가
+
+.large[
+```{r eval=FALSE}
+ggplot(krbg) + #<<
+  geom_point(aes(x = `금액_원안`, y=`증감액`))
+```
+]
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 동작 설명
+
+1. `ggplot()` 함수로 차트를 초기화
+1. `geom_point()` 함수로 레이어를 추가
+
+.large[
+```{r eval=FALSE}
+ggplot(krbg) + 
+  geom_point(aes(x = `금액_원안`, y=`증감액`)) #<<
+```
+]
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 템플릿
+.large[
+```{r eval=FALSE}
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
+]
+
+
+---

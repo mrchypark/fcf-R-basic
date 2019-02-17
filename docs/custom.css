@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+CJK+KR');
+@import url('http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css');
 
 html, body, h1, h2, h3, h4, h5, h6, li, p {font-family: 'Noto Sans CJK KR', sans-serif;}
+
+code {font-family: 'D2 coding', monospace;}
 
 .remark-slide-number {
   display: none;
@@ -39,7 +42,6 @@ html, body, h1, h2, h3, h4, h5, h6, li, p {font-family: 'Noto Sans CJK KR', sans
   margin-top: -0.1em;
   margin-left: 0.1em;
 }
-
 
 .chapter-slide {
   background-image: url(https://user-images.githubusercontent.com/6179259/52895531-247b6980-31ff-11e9-9d91-616d21b39a78.png);
@@ -87,11 +89,48 @@ html, body, h1, h2, h3, h4, h5, h6, li, p {font-family: 'Noto Sans CJK KR', sans
   text-shadow: none;
   font-size: 1.6em;
   font-weight: 700;
-  
   margin-bottom: 0em;
   margin-left: -1em;
 }
 
 .content-slide p {
   margin-bottom: 0em;
+}
+
+.blank-slide {
+  background-image: url(https://user-images.githubusercontent.com/6179259/52909190-9ae39e80-32c7-11e9-8dd9-8653068a73e7.png);
+  background-size: cover;
+}
+
+.blank-slide h3 {
+  text-shadow: none;
+  font-size: 2.3em;
+  font-weight: 500;
+  margin-top: -0.2em;
+}
+
+.large .remark-code { font-size: 130% }
+.small .remark-code { font-size: 70%  }
+.tiny .remark-code { font-size: 40%  }
+
+.large { font-size: 130% }
+.small { font-size: 70%  }
+.tiny { font-size: 40%  }
+
+.blue { color: #3b5998; }
+.yellow { color: #FFCB01; }
+.gray { color: #7f7f7f; }
+.point { color: #F0234B; }
+
+.point .remark-code { color: #F0234B; }
+
+.codet {
+  
+}
+
+.remark-inline-code{
+  background: #F5F5F5; /* lighter */
+  /* background: #e7e8e2; /* darker */
+  border-radius: 3px;
+  padding: 4px;
 }
