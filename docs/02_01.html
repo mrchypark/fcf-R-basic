@@ -80,6 +80,20 @@ class: content-slide
 ```r
 library(krbudget2019)
 data(krbg)
+krbg
+#&gt; # A tibble: 1,590 x 15
+#&gt;   소관  입출분류 회계분류 계정  `장(분야)` `관(부문)` `항(프로그램)`
+#&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;         
+#&gt; 1 대통령비~ 세입     일반회계 -     ""         재산수입   관유물대여료  
+#&gt; 2 대통령비~ 세입     일반회계 -     ""         경상이전수입~ 기타경상이전수입~
+#&gt; 3 대통령비~ 세입     일반회계 -     ""         재화및용역판매수입~ 잡수입        
+#&gt; 4 대통령경~ 세입     일반회계 -     ""         재산수입   관유물대여료  
+#&gt; 5 대통령경~ 세입     일반회계 -     ""         재화및용역판매수입~ 면허료및수수료
+#&gt; 6 대통령경~ 세입     일반회계 -     ""         재화및용역판매수입~ 잡수입        
+#&gt; # ... with 1,584 more rows, and 8 more variables: 금액_원안 &lt;dbl&gt;,
+#&gt; #   계정별합계_원안 &lt;dbl&gt;, 회계분류별합계_원안 &lt;dbl&gt;, 소관총계_원안 &lt;dbl&gt;,
+#&gt; #   증감액 &lt;dbl&gt;, 수정금액_확정안 &lt;dbl&gt;, 회계분류별합계_확정안 &lt;dbl&gt;,
+#&gt; #   소관총계_확정안 &lt;dbl&gt;
 ```
 
 ---
@@ -126,7 +140,9 @@ class: content-slide
 
 ## 실행해보기!
 
-아래 코드를 각자 콘솔에서 실행시켜보세요. 오탈자, 대소문자, 괄호 등을 신경써서 그대로 입력해야 합니다!
+아래 코드를 각자 콘솔에서 실행시켜보세요. 
+오탈자, 대소문자, 괄호 등을 신경써서 그대로 입력해야 합니다!
+`금액_원안` 글자를 감싸고 있는 글자는 백틱이라고 부르며 느낌표키 왼쪽에 있습니다.
 
 ```r
 library(ggplot2)
@@ -155,7 +171,26 @@ class: content-slide
 ## 동작 설명
 
 1. `ggplot()` 함수로 차트를 초기화
-1. `geom_*()` 함수로 레이어를 추가
+1. `geom_point()` 함수로 레이어를 추가
+
+.large[
+
+```r
+ggplot(krbg) + 
+  geom_point(aes(x = `금액_원안`, y=`증감액`))
+```
+]
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 동작 설명
+
+1. .large[`ggplot()` 함수로 차트를 초기화]
+1. `geom_point()` 함수로 레이어를 추가
 
 .large[
 
@@ -174,7 +209,7 @@ class: content-slide
 ## 동작 설명
 
 1. `ggplot()` 함수로 차트를 초기화
-1. `geom_point()` 함수로 레이어를 추가
+1. .large[`geom_point()` 함수로 레이어를 추가]
 
 .large[
 
@@ -191,6 +226,7 @@ class: content-slide
 ### 차트 그리기
 
 ## 템플릿
+
 .large[
 
 ```r
@@ -198,9 +234,6 @@ ggplot(data = &lt;DATA&gt;) +
   &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))
 ```
 ]
-
-
----
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

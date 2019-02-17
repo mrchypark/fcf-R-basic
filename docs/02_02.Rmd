@@ -1,0 +1,38 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+```{r include=FALSE}
+library(ggplot2)
+```
+
+class: title-slide
+
+#### 02
+### 데이터를 연결하는 map
+## 차트의 그림 요소들에 데이터를 연결하여 그려보자
+
+---
+class: blank-slide center middle
+
+### 그림을 그리는 ggplot2
+
+<img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/ggplot2.png?raw=true" width=30%>
+
+---
+class: content-slide
+
+#### 02
+### 데이터를 연결하는 map

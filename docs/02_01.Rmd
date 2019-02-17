@@ -81,6 +81,7 @@ class: content-slide
 ```{r}
 library(krbudget2019)
 data(krbg)
+krbg
 ```
 
 ---
@@ -111,7 +112,9 @@ class: content-slide
 
 ## 실행해보기!
 
-아래 코드를 각자 콘솔에서 실행시켜보세요. 오탈자, 대소문자, 괄호 등을 신경써서 그대로 입력해야 합니다!
+아래 코드를 각자 콘솔에서 실행시켜보세요. 
+오탈자, 대소문자, 괄호 등을 신경써서 그대로 입력해야 합니다!
+`금액_원안` 글자를 감싸고 있는 글자는 백틱이라고 부르며 느낌표키 왼쪽에 있습니다.
 
 ```r
 library(ggplot2)
@@ -143,7 +146,25 @@ class: content-slide
 ## 동작 설명
 
 1. `ggplot()` 함수로 차트를 초기화
-1. `geom_*()` 함수로 레이어를 추가
+1. `geom_point()` 함수로 레이어를 추가
+
+.large[
+```{r eval=FALSE}
+ggplot(krbg) + 
+  geom_point(aes(x = `금액_원안`, y=`증감액`))
+```
+]
+
+---
+class: content-slide
+
+#### 01
+### 차트 그리기
+
+## 동작 설명
+
+1. .large[`ggplot()` 함수로 차트를 초기화]
+1. `geom_point()` 함수로 레이어를 추가
 
 .large[
 ```{r eval=FALSE}
@@ -161,7 +182,7 @@ class: content-slide
 ## 동작 설명
 
 1. `ggplot()` 함수로 차트를 초기화
-1. `geom_point()` 함수로 레이어를 추가
+1. .large[`geom_point()` 함수로 레이어를 추가]
 
 .large[
 ```{r eval=FALSE}
@@ -177,12 +198,10 @@ class: content-slide
 ### 차트 그리기
 
 ## 템플릿
+
 .large[
 ```{r eval=FALSE}
 ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 ]
-
-
----
