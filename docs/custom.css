@@ -46,7 +46,52 @@ html, body, h1, h2, h3, h4, h5, h6, li, p {font-family: 'Noto Sans CJK KR', sans
   background-size: cover;
 }
 
+.chapter-slide h4 {
+  text-shadow: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-top: 11.85em;
+  margin-left: 2.5em;
+}
+
+.chapter-slide h3 {
+  text-shadow: none;
+  font-size: 2.3em;
+  font-weight: 500;
+  margin-top: -0.2em;
+}
+
 .content-slide {
   background-image: url(https://user-images.githubusercontent.com/6179259/52895576-03ffdf00-3200-11e9-8e19-9d90e3ab6517.png);
   background-size: cover;
+}
+
+.content-slide h4 {
+  text-shadow: none;
+  font-size: 0.65em;
+  font-weight: bold;
+  margin-top: -0.65em;
+  margin-left: -1em;
+}
+
+.content-slide h3 {
+  text-shadow: none;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-top: -0.61em;
+  margin-bottom: 0em;
+  margin-left: -2em;
+}
+
+.content-slide h2 {
+  text-shadow: none;
+  font-size: 1.6em;
+  font-weight: 700;
+  
+  margin-bottom: 0em;
+  margin-left: -1em;
+}
+
+.content-slide p {
+  margin-bottom: 0em;
 }

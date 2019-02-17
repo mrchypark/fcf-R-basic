@@ -22,7 +22,7 @@ class: title-slide
 
 ---
 
-class: chapter-slide
+class: chapter-slide, center
 
 #### 00
 ### 이건 중간 슬라이드 입니다.
@@ -31,6 +31,28 @@ class: chapter-slide
 
 class: content-slide
 
-#### 00
-### 챕터 명
-## 스라이드의 타이틀
+#### 00 챕터명
+### 슬라이드의 한줄 요약
+
+## 이건 그냥 타이틀
+
+이건 그냥 글자
+
+```{r}
+library(ggplot2)
+mpg
+```
+
+---
+
+class: content-slide
+
+#### 00 챕터명
+### 슬라이드의 한줄 요약
+
+이건 그냥 글자
+
+```{r}
+library(ggplot2)
+mpg
+```
