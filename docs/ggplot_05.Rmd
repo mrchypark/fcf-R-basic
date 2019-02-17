@@ -22,3 +22,154 @@ class: title-slide
 ### 차트의 출력과 저장
 ## ggsave()와 저장 경로
 
+---
+class: blank-slide center middle
+
+### 그림을 그리는 ggplot2
+
+<img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/ggplot2.png?raw=true" width=30%>
+
+---
+class: content-slide
+
+#### 05
+### 지난 시간 복습
+
+## `+`로 차트를 더하기와 지역/전역으로 생각하기
+
+.large[
+.codep[
+> .black[ggplot(krbg) +]     
+> .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_point(aes(x = 금액\\\_원안, y = 증감액)) +]     
+> .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth(aes(x = 금액\\\_원안, y = 증감액))] 
+]
+]
+
+---
+class: content-slide
+#### 05
+### 차트의 출력과 저장
+
+## plots 창의 Export 기능
+
+![](https://user-images.githubusercontent.com/6179259/52916644-8504c680-3325-11e9-9340-a5838a9cb1ed.png)
+
+---
+class: content-slide
+#### 05
+### 차트의 출력과 저장
+
+## 코드로 차트를 저장
+
+.large[
+.codep[
+> .black[ggsave("my-plot.pdf")]     
+> .black[ggsave("my-plot.png")]     
+]
+]
+
+--
+
+## 저장 이미지의 크기를 지정
+
+`units` 옵션으로 단위를 `in`, `cm`, `mm`으로 지정할 수 있습니다.
+
+.large[
+.codep[
+> .black[ggsave("my-plot.png", width = 6, height = 6, units = "cm")]     
+]
+]
+
+---
+class: blank-slide center middle
+
+### 그럼 어디에 저장되는 건가?
+
+---
+class: content-slide
+
+#### 05
+### 차트의 출력과 저장
+
+## 퀴즈!  
+
+.large[
+1. `getwd()` 함수를 콘솔에 입력하면 어떤 폴더 위치가 나옵니다. 그것이 무슨 뜻인가요?
+]
+
+---
+
+class: blank-slide center middle
+
+### 작업 폴더(working directory)
+
+---
+class: content-slide
+#### 05
+### 차트의 출력과 저장
+
+## 작업 폴더에 저장
+
+기본으로 저장하는 곳이 작업 폴더
+
+.large[
+.codep[
+> .black[ggsave("my-plot.pdf")]     
+> .black[ggsave("my-plot.png")]     
+]
+]
+
+---
+class: content-slide
+#### 05
+### 차트의 출력과 저장
+
+## 작업 폴더 이외의 곳에 저장
+
+작업 폴더 내의 `img` 폴더에 저장    
+작업 폴더라는 표시는 `./`    
+작업 폴더의 상위 폴더는 `../`    
+
+.large[
+.codep[
+> .black[ggsave("img/my-plot.png")]     
+> .black[ggsave("./my-plot.png")]     
+> .black[ggsave("../my-plot.png")]     
+]
+]
+
+---
+class: content-slide
+
+#### 05
+### 차트의 출력과 저장
+
+## 퀴즈!  
+
+.large[
+1. 작업 폴더의 상위 폴더에 있는 `img` 폴더에 저장하려면 `ggsave()` 함수에 어떻게 작성해야 할까요?
+]
+
+--
+<br>
+
+.large[
+.codep[
+> .black[ggsave("../img/my-plot.png")]     
+]
+]
+
+---
+class: content-slide
+
+#### 05
+### 차트의 출력과 저장
+
+## 작업 폴더를 새롭게 지정
+
+.large[
+.codep[
+> .black[setwd("c:/Users/rcoholic/Documents/project/ggplot_pro01")]     
+]
+]
+

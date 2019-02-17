@@ -1,0 +1,55 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+```{r load_setup, child="ggplot_pack.Rmd"}
+```
+
+class: title-slide
+
+#### 07
+### 움직이는 차트 gganimate
+## gganimate로 차트를 움직이게 하기
+
+---
+class: blank-slide center middle
+
+### 움직이는 차트 gganimate
+
+<img src="https://gganimate.com/reference/figures/logo.png" width=30%>
+
+---
+class: content-slide
+
+#### 06
+### 지난 시간 복습
+
+## `ggsave()` 함수로 저장하고 경로를 설정
+
+.large[
+.codep[
+> .black[ggsave("../img/my-plot.png")]     
+]
+]
+
+---
+class: content-slide
+#### 06
+### 차트의 다양한 설정
+
+## 옵션을 고려한 템플릿
+
+![](https://user-images.githubusercontent.com/6179259/52918028-a1a8fa80-3335-11e9-9af6-1f91a539c24a.png)
+
+---
