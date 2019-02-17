@@ -3,7 +3,7 @@
 
 html, body, h1, h2, h3, h4, h5, h6, li, p {font-family: 'Noto Sans CJK KR', sans-serif;}
 
-code {font-family: 'D2 coding', monospace;}
+code codep {font-family: 'D2 coding', monospace;}
 
 .remark-slide-number {
   display: none;
@@ -110,23 +110,26 @@ code {font-family: 'D2 coding', monospace;}
 }
 
 .large .remark-code { font-size: 130% }
+.larg .remark-code { font-size: 120% }
+.lar .remark-code { font-size: 110% }
 .small .remark-code { font-size: 70%  }
 .tiny .remark-code { font-size: 40%  }
 
 .large { font-size: 130% }
+.larg { font-size: 120% }
+.lar { font-size: 110% }
 .small { font-size: 70%  }
 .tiny { font-size: 40%  }
 
 .blue { color: #3b5998; }
 .yellow { color: #FFCB01; }
 .gray { color: #7f7f7f; }
+.black { color: #000000;}
 .point { color: #F0234B; }
 
 .point .remark-code { color: #F0234B; }
 
-.codet {
-  
-}
+.codep {}
 
 .remark-inline-code{
   background: #F5F5F5; /* lighter */

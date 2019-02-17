@@ -134,7 +134,7 @@ ggplot(krbg) + geom_point(aes(x = `금액_원안`, y=`증감액`))
 ```
 ```{r echo=FALSE}
 library(ggplot2)
-ggplot(krbg) + geom_point(aes(x = `금액_원안`, y=`증감액`))
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y = `증감액`))
 ```
 
 ---
@@ -200,8 +200,8 @@ class: content-slide
 ## 템플릿
 
 .large[
-```{r eval=FALSE}
-ggplot(data = <DATA>) +
-  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
-```
+.codep[
+> ggplot(data = .point[{ DATA }]) +    
+>  &nbsp; &nbsp; &nbsp; &nbsp;.point[{ GEOM_FUNCTION }](mapping = aes(.point[{ MAPPINGS }]))
+]
 ]
