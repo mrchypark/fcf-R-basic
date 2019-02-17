@@ -1,0 +1,24 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+```{r load_setup, child="ggplot_pack.Rmd"}
+```
+
+class: title-slide
+
+#### 05
+### 차트의 출력과 저장
+## ggsave()와 저장 경로
+

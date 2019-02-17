@@ -83,7 +83,7 @@ class: content-slide
 ## 퀴즈!  
 
 .large[
-1. 아래 코드는 어떤 그림을 출력할까요?
+1. 아래 코드는 어떤 차트를 출력할까요?
 ]
 
 
@@ -104,6 +104,109 @@ class: content-slide
 ## 상상하셨나요? 
 
 &lt;img src="ggplot_04_files/figure-html/unnamed-chunk-1-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+class: content-slide
+
+#### 04
+### `+`로 한 차트에 여러 층으로 더하여 그리기
+
+## 데이터를 입력하는 곳과 데이터를 연결(mapping)하는 곳
+
+.large[
+.codep[
+&gt; .gray[ggplot(.point[krbg]) +]     
+&gt; .gray[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_point(.point[aes(x = 금액\\\\\_원안, y = 증감액)]) +]     
+&gt; .gray[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_smooth(.point[aes(x = 금액\\\\\_원안, y = 증감액)])] 
+]
+]
+
+---
+class: blank-slide center middle
+
+### 전역(global)과 지역(local)
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 전역이란
+
+.large[`ggplot()`과 `+` 기호로 연결된 차트들 모두를 뜻함]
+
+--
+
+## 지역이란
+
+.large[`geom_*()` 함수로 작성하는 차트 층 각각을 뜻함]
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 데이터를 차트 전체에서 사용하고 싶을 때
+
+.large[
+.codep[
+&gt; .gray[ggplot(.point[krbg]) +]     
+&gt; .gray[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_point(aes(x = 금액\\\_원안, y = 증감액)) +]     
+&gt; .gray[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_smooth(aes(x = 금액\\\_원안, y = 증감액))] 
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 데이터와 연결 방식을 차트 전체에서 사용하고 싶을 때
+
+.large[
+.codep[
+&gt; .gray[ggplot(.point[krbg, aes(x = 금액\\\_원안, y = 증감액)]) +]     
+&gt; .gray[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_point() +]     
+&gt; .gray[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_smooth()] 
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 퀴즈!  
+
+.large[
+1. 아래 코드는 어떤 차트를 출력할까요?
+]
+
+.large[
+.codep[
+&gt; .black[ggplot(krbg, aes(x = 금액\\\_원안, y = 증감액)) +]     
+&gt; .black[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_point(aes(coler = 입출분류)) +]     
+&gt; .black[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_smooth()] 
+]
+]
+
+--
+
+.large[
+&amp;nbsp; .black[2]. 아래 코드는 어떤 차트를 출력할까요?
+]
+
+.large[
+.codep[
+&gt; .black[ggplot(krbg, aes(x = 금액\\\_원안, y = 증감액)) +]     
+&gt; .black[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_point(aes(coler = 입출분류)) +]     
+&gt; .black[&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; geom\\\_smooth(data = filter(krbg, 금액\\\_원안 &lt; 20000000000000))] 
+]
+]
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

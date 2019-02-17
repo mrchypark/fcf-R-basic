@@ -84,7 +84,7 @@ class: content-slide
 ## 퀴즈!  
 
 .large[
-1. 아래 코드는 어떤 그림을 출력할까요?
+1. 아래 코드는 어떤 차트를 출력할까요?
 ]
 
 
@@ -110,3 +110,105 @@ ggplot(krbg) +
   geom_smooth(aes(x = `금액_원안`, y = `증감액`), method = "loess")
 ```
 
+---
+class: content-slide
+
+#### 04
+### `+`로 한 차트에 여러 층으로 더하여 그리기
+
+## 데이터를 입력하는 곳과 데이터를 연결(mapping)하는 곳
+
+.large[
+.codep[
+> .gray[ggplot(.point[krbg]) +]     
+> .gray[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_point(.point[aes(x = 금액\\\\\_원안, y = 증감액)]) +]     
+> .gray[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth(.point[aes(x = 금액\\\\\_원안, y = 증감액)])] 
+]
+]
+
+---
+class: blank-slide center middle
+
+### 전역(global)과 지역(local)
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 전역이란
+
+.large[`ggplot()`과 `+` 기호로 연결된 차트들 모두를 뜻함]
+
+--
+
+## 지역이란
+
+.large[`geom_*()` 함수로 작성하는 차트 층 각각을 뜻함]
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 데이터를 차트 전체에서 사용하고 싶을 때
+
+.large[
+.codep[
+> .gray[ggplot(.point[krbg]) +]     
+> .gray[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_point(aes(x = 금액\\\_원안, y = 증감액)) +]     
+> .gray[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth(aes(x = 금액\\\_원안, y = 증감액))] 
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 데이터와 연결 방식을 차트 전체에서 사용하고 싶을 때
+
+.large[
+.codep[
+> .gray[ggplot(.point[krbg, aes(x = 금액\\\_원안, y = 증감액)]) +]     
+> .gray[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_point() +]     
+> .gray[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth()] 
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### 전역과 지역
+
+## 퀴즈!  
+
+.large[
+1. 아래 코드는 어떤 차트를 출력할까요?
+]
+
+.large[
+.codep[
+> .black[ggplot(krbg, aes(x = 금액\\\_원안, y = 증감액)) +]     
+> .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_point(aes(coler = 입출분류)) +]     
+> .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth()] 
+]
+]
+
+--
+
+.large[
+&nbsp; .black[2]. 아래 코드는 어떤 차트를 출력할까요?
+]
+
+.large[
+.codep[
+> .black[ggplot(krbg, aes(x = 금액\\\_원안, y = 증감액)) +]     
+> .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_point(aes(coler = 입출분류)) +]     
+> .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth(data = filter(krbg, 금액\\\_원안 < 20000000000000))] 
+]
+]
