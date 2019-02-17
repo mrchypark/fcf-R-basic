@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ggplot_04.utf8.md</title>
+    <meta charset="utf-8">
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+class: title-slide
+
+#### 04
+### 차트 종류를 더하는 geoms
+## geom_*() 함수를 더해 차트를 겹쳐 그리기
+
+---
+class: blank-slide center middle
+
+### 그림을 그리는 ggplot2
+
+&lt;img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/ggplot2.png?raw=true" width=30%&gt;
+
+---
+class: content-slide
+
+#### 04
+### 차트 그리기 복습
+
+## 템플릿
+
+.large[
+.codep[
+&gt; ggplot(data = .point[{ DATA }]) +    
+&gt;  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;.point[{ GEOM_FUNCTION }](mapping = aes(.point[{ MAPPINGS }]))
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### 연결한 데이터를 그리는 차트 종류 정하기
+
+## geom_*() 함수는 차트의 종류를 지정하는 역할을 한다
+
+.large[
+.codep[
+&gt; ggplot(data = { DATA }) +    
+&gt;  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;.point[{ GEOM_FUNCTION }](mapping = aes({ MAPPINGS }))
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### `+`로 한 차트에 여러 층으로 더하여 그리기
+
+## 살펴볼 내용
+
+.large[
+.codep[
+&gt; ggplot(data = { DATA }) .point[+]   
+&gt;  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;.point[{ GEOM_FUNCTION }](mapping = aes({ MAPPINGS })) .point[+]
+&gt;  &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;.point[{ GEOM_FUNCTION }](mapping = aes({ MAPPINGS }))
+]
+]
+
+---
+class: chapter-slide center
+
+#### 03
+### 차트 모양을 결정하는 `geom_*()` 함수
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## 데이터, x, y가 같은 차트
+
+.pull-left[
+&lt;img src="ggplot_04_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="ggplot_04_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## geom_*() 함수를 다른 것을 사용함
+
+.pull-left[
+&lt;img src="ggplot_04_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="ggplot_04_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+.pull-left[
+
+```r
+ggplot(krbg) + 
+* geom_point(aes(x = `금액_원안`, y = `증감액`))
+```
+&lt;img src="ggplot_04_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+```r
+ggplot(krbg) + 
+* geom_smooth(aes(x = `금액_원안`, y = `증감액`))
+```
+&lt;img src="ggplot_04_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## ggplot2의 설명서 보기
+
+![](https://user-images.githubusercontent.com/6179259/52914835-85df2d80-3310-11e9-80d8-47ed0959497e.png)
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## ggplot2 설명서(cheat sheet)
+
+![](https://user-images.githubusercontent.com/6179259/52915125-a6f54d80-3313-11e9-8c8c-97cd4aa8f745.png)
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## ggplot2 설명서(cheat sheet)
+
+![](https://user-images.githubusercontent.com/6179259/52915125-a6f54d80-3313-11e9-8c8c-97cd4aa8f745.png)
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## geoms 부분 참고
+
+![](https://user-images.githubusercontent.com/6179259/52915427-55e75880-3317-11e9-8213-ab8ec4adea4f.png)
+
+
+---
+class: blank-slide center middle
+
+### cheat sheet을 함께 살펴보겠습니다.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

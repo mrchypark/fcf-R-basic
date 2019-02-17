@@ -1,11 +1,5 @@
 base
-methods
 usethis
-datasets
-utils
-grDevices
-graphics
-stats
 ggplot2
 dplyr
 krbudget2019
