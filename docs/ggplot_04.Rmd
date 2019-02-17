@@ -1,0 +1,196 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(krbudget2019)
+```
+
+class: title-slide
+
+#### 04
+### 차트 종류를 더하는 geoms
+## geom_*() 함수를 더해 차트를 겹쳐 그리기
+
+---
+class: blank-slide center middle
+
+### 그림을 그리는 ggplot2
+
+<img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/ggplot2.png?raw=true" width=30%>
+
+---
+class: content-slide
+
+#### 04
+### 차트 그리기 복습
+
+## 템플릿
+
+.large[
+.codep[
+> ggplot(data = .point[{ DATA }]) +    
+>  &nbsp; &nbsp; &nbsp; &nbsp;.point[{ GEOM_FUNCTION }](mapping = aes(.point[{ MAPPINGS }]))
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### 연결한 데이터를 그리는 차트 종류 정하기
+
+## geom_*() 함수는 차트의 종류를 지정하는 역할을 한다
+
+.large[
+.codep[
+> ggplot(data = { DATA }) +    
+>  &nbsp; &nbsp; &nbsp; &nbsp;.point[{ GEOM_FUNCTION }](mapping = aes({ MAPPINGS }))
+]
+]
+
+---
+class: content-slide
+
+#### 04
+### `+`로 한 차트에 여러 층으로 더하여 그리기
+
+## 살펴볼 내용
+
+.large[
+.codep[
+> ggplot(data = { DATA }) .point[+]   
+>  &nbsp; &nbsp; &nbsp; &nbsp;.point[{ GEOM_FUNCTION }](mapping = aes({ MAPPINGS })) .point[+]
+>  &nbsp; &nbsp; &nbsp; &nbsp;.point[{ GEOM_FUNCTION }](mapping = aes({ MAPPINGS }))
+]
+]
+
+---
+class: chapter-slide center
+
+#### 03
+### 차트 모양을 결정하는 `geom_*()` 함수
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## 데이터, x, y가 같은 차트
+
+.pull-left[
+```{r, fig.width = 6, fig.asp = 0.9, echo=F, out.width = "100%"}
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y = `증감액`))
+```
+]
+.pull-right[
+```{r, fig.width = 6, fig.asp = 0.9, echo=F, out.width = "100%"}
+ggplot(krbg) + geom_smooth(aes(x = `금액_원안`, y = `증감액`), method = "loess")
+```
+]
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## geom_*() 함수를 다른 것을 사용함
+
+.pull-left[
+```{r, fig.width = 6, fig.asp = 0.9, echo=F, out.width = "100%"}
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y = `증감액`))
+```
+]
+.pull-right[
+```{r, fig.width = 6, fig.asp = 0.9, echo=F, out.width = "100%"}
+ggplot(krbg) + geom_smooth(aes(x = `금액_원안`, y = `증감액`), method = "loess")
+```
+]
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+.pull-left[
+```{r eval=F}
+ggplot(krbg) + 
+  geom_point(aes(x = `금액_원안`, y = `증감액`)) #<<
+```
+```{r, fig.width = 5, fig.asp = 0.9, echo=F, out.width = "100%"}
+ggplot(krbg) + geom_point(aes(x = `금액_원안`, y = `증감액`))
+```
+]
+.pull-right[
+```{r eval=F}
+ggplot(krbg) + 
+  geom_smooth(aes(x = `금액_원안`, y = `증감액`)) #<<
+```
+```{r, fig.width = 5, fig.asp = 0.9, echo=F, out.width = "100%"}
+ggplot(krbg) + geom_smooth(aes(x = `금액_원안`, y = `증감액`), method = "loess")
+```
+]
+
+---
+
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## ggplot2의 설명서 보기
+
+![](https://user-images.githubusercontent.com/6179259/52914835-85df2d80-3310-11e9-80d8-47ed0959497e.png)
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## ggplot2 설명서(cheat sheet)
+
+![](https://user-images.githubusercontent.com/6179259/52915125-a6f54d80-3313-11e9-8c8c-97cd4aa8f745.png)
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## ggplot2 설명서(cheat sheet)
+
+![](https://user-images.githubusercontent.com/6179259/52915125-a6f54d80-3313-11e9-8c8c-97cd4aa8f745.png)
+
+---
+class: content-slide
+
+#### 03
+### 모양을 정하는 geom_*()
+
+## geoms 부분 참고
+
+![](https://user-images.githubusercontent.com/6179259/52915427-55e75880-3317-11e9-8213-ab8ec4adea4f.png)
+
+
+---
+class: blank-slide center middle
+
+### cheat sheet을 함께 살펴보겠습니다.
