@@ -109,6 +109,11 @@ code codep {font-family: 'D2 coding', monospace;}
   margin-top: -0.2em;
 }
 
+.end-slide {
+  background-image: url(https://user-images.githubusercontent.com/6179259/52919252-a4125100-3343-11e9-9f3c-75676b337317.png);
+  background-size: cover;
+}
+
 .large .remark-code { font-size: 130% }
 .larg .remark-code { font-size: 120% }
 .lar .remark-code { font-size: 110% }

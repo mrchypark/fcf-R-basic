@@ -199,7 +199,7 @@ class: content-slide
 ### mapping ve setting
 
 .codep[
-ggplot(krbg) + geom\\\_point(aes(x = 금액\\\_원안, y = 증감액), .point[color = "blue"]))
+ggplot(krbg) + geom\\\_point(.point[aes(x = 금액\\\_원안, y = 증감액, color = "blue")])
 ]
 &lt;br&gt;
 &lt;img src="ggplot_02_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /&gt;
@@ -211,7 +211,7 @@ class: content-slide
 ### mapping ve setting
 
 .codep[
-ggplot(krbg) + geom\\\_point(.point[aes(x = 금액\\\_원안, y = 증감액, color = "blue")])
+ggplot(krbg) + geom\\\_point(aes(x = 금액\\\_원안, y = 증감액), .point[color = "blue"])
 ]
 &lt;br&gt;
 &lt;img src="ggplot_02_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" /&gt;
@@ -237,6 +237,9 @@ class: content-slide
 mapping 하기 위해서는 `aes()` 함수 .point[안]에 작성    
 setting 하기 위해서는 `aes()` 함수 .point[밖]에 작성
 ]
+
+---
+class: end-slide
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

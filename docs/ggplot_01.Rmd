@@ -203,3 +203,6 @@ class: content-slide
 >  &nbsp; &nbsp; &nbsp; &nbsp;.point[{ GEOM_FUNCTION }](mapping = aes(.point[{ MAPPINGS }]))
 ]
 ]
+
+---
+class: end-slide

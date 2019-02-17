@@ -212,3 +212,7 @@ class: content-slide
 > .black[&nbsp; &nbsp; &nbsp; &nbsp; geom\\\_smooth(data = filter(krbg, 금액\\\_원안 < 20000000000000))] 
 ]
 ]
+
+
+---
+class: end-slide
