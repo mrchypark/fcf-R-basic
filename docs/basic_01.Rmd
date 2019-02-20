@@ -1,0 +1,34 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+```{r load_setup, child="ggplot_pack.Rmd"}
+```
+
+class: title-slide
+
+#### 01
+### R과 Rstudio 설치
+## 프로그램 설치하여 준비하기
+
+---
+class: content-slide
+
+#### 01 R과 Rstudio 설치
+### 다운로드 주소
+
+## R       : <https://www.r-project.org/>
+## Rstudio : <https://www.rstudio.com/>
+---
+class: end-slide
