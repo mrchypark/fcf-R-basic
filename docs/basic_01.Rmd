@@ -30,5 +30,12 @@ class: content-slide
 
 ## R       : <https://www.r-project.org/>
 ## Rstudio : <https://www.rstudio.com/>
+
+<br>
+
+--
+
+## windows 사용자만
+## Rtools  : <https://cran.r-project.org/bin/windows/Rtools/>
 ---
 class: end-slide
