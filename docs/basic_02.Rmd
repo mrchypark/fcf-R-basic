@@ -1,0 +1,26 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+```{r load_setup, child="ggplot_pack.Rmd"}
+```
+
+class: title-slide
+
+#### 02
+### Rstudio 구성 소개
+## Rstudio 사용법 익히기
+
+---
+class: end-slide
