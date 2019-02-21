@@ -18,9 +18,9 @@ output:
 
 class: title-slide
 
-#### 02
+#### 03
 ### Rstudio
-## Rstudio 사용법 익히기
+## Rstudio에서 유용한 설정
 
 ---
 class: end-slide
