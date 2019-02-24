@@ -4,7 +4,6 @@
 #    R 프로그래밍 - 강사. 박찬엽     #
 #                                    #
 
-
 # 프로그램의 기본  ----
 ## 12. R의 기본 연산자 ----
 # 연산자란 지금까지 보았던 숫자의 계산 등을 뜻함
@@ -188,21 +187,152 @@ if (x > 5) {
 }
 
 ## 15. 반복문 for ----
-# for
-# next, break
+# 반복문의 기본
+
+# for (for내부에서 사용할 지역 변수 in 전체 사용할 벡터) {
+#   print(for내부에서 사용할 지역 변수)
+# }
+
+for (i in 1:10) {
+  print(i)
+}
+
+chr_v <- c("a","b","c","d","e","f")
+for (i in chr_v) {
+  print(i)
+}
+
+# next는 다음 반복으로 넘어가라는 뜻
+for (i in 1:10) {
+  if (i == 4) {
+    next
+  }
+  print(i)
+}
+
+# break는 이제 그만 하라는 뜻
+for (i in 1:10) {
+  if (i == 4) {
+    break
+  }
+  print(i)
+}
+
 
 ## 16. 반복문 작성 예시 ----
-# data.frame에 추가
+# 데이터 프레임과 함께 사용
+
+df <- data.frame(a = c("a","b","c","d","e","f"), 
+                 b = 1:6, 
+                 stringsAsFactors = F)
+
+for (i in 1:nrow(df)) {
+  print(df[i, ])
+}
+
+# 데이터를 추가하고 싶을 때
+
+df <- data.frame(a = c("a","b","c"), 
+                 b = 1:3, 
+                 stringsAsFactors = F)
+df
+add_a <- c("d","e","f","g")
+add_b <- 4:7
+for (i in 1:length(add_a)) {
+  print("for start")
+  tem <- data.frame(a = add_a[i], b = add_b[i], stringsAsFactors = F)
+  df  <- rbind(df, tem)
+  print(df)
+}
+df
+
 # 파일 저장
 
-## 17. apply 계열 함수 ----
-# matrix에 apply 
+df <- data.frame(a = c("a","b","c","d","e","f"), 
+                 b = 1:6, 
+                 stringsAsFactors = F)
 
-# lapply
-# sapply
-# tapply
+for (i in 1:nrow(df)) {
+  file_name <- paste0(df[i,"a"],".csv")
+  write.csv(df[i, ], file_name)
+}
+
+## 17. apply 계열 함수 ----
+# 메트릭스 연산 apply
+args(apply)
+
+mtrx <- matrix(1:30, nrow = 5, ncol = 6)
+mtrx
+apply(mtrx, 2, sum)
+apply(mtrx, 1, sum)
+
+# 함수를 직접 작성할 수 있음
+# 이름 없이 함수를 정의하여 직접 사용한다고 해서 익명함수라고 함
+apply(mtrx, 1:2, function(x) x/2)
+
+# lapply는 리스트에 apply를 하여 결과를 리스트로 제공
+l <- list(a = 1:10, b = 11:20)
+l
+lapply(l, mean)
+lapply(l, sum)
+
+# 그렇다면 데이터프레임에서는?
+# 컬럼단위 연산 결과를 리스트로 제공
+df <- data.frame(a = 1:10, b = 11:20)
+lapply(df, mean)
+lapply(df, sum)
+
+# 리스트 결과는 다루기 어려움
+# 결과를 원자 벡터로 제공하는 버전인 sapply가 있음
+df <- data.frame(a = 1:10, b = 11:20)
+sapply(df, mean)
+sapply(df, sum)
+
+# 그룹별로 tapply 
+# 리스트별이나 컬럼 별이 아니라 그룹별로 동작하는 버전
+iris
+tapply(iris$Petal.Length, iris$Species, mean)
 
 
 ## 18. 에러 처리 ----
+# for를 작성할 때 error가 발생하면 멈춤
+# try 함수는 error가 발생하더라도 멈추지 않고 계속할 수 있게 해줌
 
+dat <- data.frame(a = 5, b = c(1,2,3,4))
 
+for (i in 1:4) {
+  if (i == 3) {
+    print(kt)
+  }
+  print(dat$a[i] / dat$b[i])
+}
+
+# 에러가 날 법한 코드 전체를 try() 함수로 감싸고 진행
+for (i in 1:4) {
+  if (i == 3) {
+    try(print(kt))
+  }
+  print(dat$a[i] / dat$b[i])
+}
+
+# 에러 출력도 없애고 진행
+for (i in 1:4) {
+  if (i == 3) {
+    try(print(kt), silent = T)
+  }
+  print(dat$a[i] / dat$b[i])
+}
+
+# 발생한 에러를 저장하여 확인
+for (i in 1:4) {
+  if (i == 3) {
+    err <- try(print(kt), silent = T)
+  }
+  print(dat$a[i] / dat$b[i])
+}
+err
+
+# tryCatch() 라는 복잡한 처리를 할 수 있는 함수
+
+args(tryCatch)
+?tryCatch
