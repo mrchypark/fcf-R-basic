@@ -201,7 +201,7 @@ mul_ln[["d"]][1]
 mul_ln[["d"]][[1]]
 
 
-## 11 클래스를 가지는 확장 벡터 ----
+## 11. 속성을 가지는 확장 벡터 ----
 ## 11.1 데이터에 속성을 추가 ----
 # 속성(attribute)이란 메타 데이터로써 `데이터의 데이터`란 뜻이다
 x <- 1:10
@@ -230,6 +230,8 @@ fct <- factor(c("a","b","c"))
 fct
 typeof(fct)
 attributes(fct)
+
+fct <- factor(c("a","b","c","a","a"))
 
 # 요인형에는 levels 가 있다!
 levels(fct)
@@ -268,7 +270,7 @@ nv4 <- 1:3
 rbind(mtrx_n, nv4)
 
 # 대괄호 내에 쉼표로 구분하여 인덱싱을 지원
-mtrx_n[1:2, 1:2]
+mtrx_n[1:3, 1:2]
 
 mtrx_n[1:2,]
 
@@ -313,6 +315,8 @@ str(school)
 typeof(school)
 attributes(school)
 names(school)
+class(school)
+row.names(school)
 dim(school)
 length(school)
 
@@ -327,10 +331,26 @@ school2 <- data.frame(이름 = chr, 성별 = lgl, 나이 = num)
 몸무게 <- c(35, 38, 40, 25)
 cbind(school, 몸무게)
 
-전학생 <- data.frame(이름 = "영희", 성별 = F, 나이 = 18)
+전학생 <- data.frame(성별 = F, 이름 = "영희", 나이 = 18)
 rbind(school, 전학생)
 
 # 메트릭스를 데이터프레임으로, 혹은 반대로 만들 수 있음
 as.matrix(school)
 mtrx <- matrix(1:10, nrow = 5)
 as.data.frame(mtrx)
+
+# 리스트와 같은 방식으로 일부의 데이터를 사용할 수 있음
+school[,1]
+school[,c(1,2)]
+school[,-1]
+school[,c("성별","이름")]
+
+school[["이름"]]
+school$이름
+
+# <- 로 선언하면서 추가, 삭제할 수 있음
+school$몸무게 <- c(35, 38, 40, 25)
+school
+
+school$몸무게 <- NULL
+school
