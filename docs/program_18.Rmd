@@ -16,9 +16,9 @@ output:
 
 class: title-slide
 
-#### 03
-### Rstudio
-## Rstudio에서 유용한 설정
+#### 18
+### R 프로그래밍의 기본
+## 에러 처리
 
 ---
 class: end-slide

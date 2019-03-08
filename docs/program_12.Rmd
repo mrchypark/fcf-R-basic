@@ -16,9 +16,9 @@ output:
 
 class: title-slide
 
-#### 03
-### Rstudio
-## Rstudio에서 유용한 설정
+#### 12
+### R 프로그래밍의 기본
+## R의 기본 연산자
 
 ---
 class: end-slide

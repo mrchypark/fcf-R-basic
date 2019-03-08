@@ -16,9 +16,9 @@ output:
 
 class: title-slide
 
-#### 03
-### Rstudio
-## Rstudio에서 유용한 설정
+#### 09
+### 데이터의 기본
+## 단일 종류의 데이터 다루기
 
 ---
 class: end-slide

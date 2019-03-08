@@ -16,9 +16,9 @@ output:
 
 class: title-slide
 
-#### 03
+#### 04
 ### Rstudio
-## Rstudio에서 유용한 설정
+## 스크립트 파일 관리
 
 ---
 class: end-slide
