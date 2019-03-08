@@ -16,9 +16,9 @@ output:
 
 class: title-slide
 
-#### 03
-### Rstudio
-## Rstudio에서 유용한 설정
+#### 11
+### 데이터의 기본
+## 속성을 가지는 확장 벡터
 
 ---
 class: end-slide
