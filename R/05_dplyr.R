@@ -9,9 +9,10 @@
 install.packages("tidyverse")
 library(tidyverse)
 tidyverse_logo()
-# 25개
 tidyverse_packages() 
 tidyverse_update()
+
+
 
 ## 사용할 데이터 설명
 
@@ -48,7 +49,11 @@ code %>%
 
 hdc
 
-
 ## data.frame과 tibble
-
+### data.frame은 리스트의 확장으로 2차원 테이블 형태의 자료구조다.
+### tibble은 현대적인 방법으로 정리한 data.frame의 일종이다.
+### 그래서 여러 class를 동시에 가지고 있음.
+### 기본 출력에서 많은 정보를 볼 수 있어서 권장함.
+class(iris)
+class(hdc)
 
