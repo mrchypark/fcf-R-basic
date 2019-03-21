@@ -140,6 +140,10 @@ code_info %>%
 code_info %>% 
   unite("company", name, code, sep = "-")
 
+code_info %>% 
+  unite("company", name, code, sep = "(") %>% 
+  mutate(company = paste0(company,")"))
+
 ### 개인적으로는 mutate() 함수와 paste0() 함수를 함께 사용하는 편.
 ### paste0() 함수는 글자를 합치는 기능을 제공.
 code_info %>% 
