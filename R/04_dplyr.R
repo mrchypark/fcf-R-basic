@@ -72,12 +72,11 @@ as_tibble(iris)
 ## select() 함수 소개
 
 library(dplyr)
-
 library(tqk)
-library(magrittr)
 code_get() %>% 
-  slice(grep("현대자동차", name)) %$% 
-  tqk_get(code, from = "2019-01-01") -> 
+  slice(grep("현대자동차", name)) %>% 
+  pull(code) %>% 
+  tqk_get(from = "2019-01-01") -> 
   hdc 
 hdc
 ### select()는 필요한 컬럼만 지정하여 데이터를 정리하는 함수.
@@ -164,33 +163,254 @@ hdc_v <- filter(hdc, volume > 1000000)
 #### 그 중 종가와 날짜 데이터가 필요해서 select()로 컬럼 2개만 출력
 hdc_v <- select(hdc_v, date, close)
 #### 종가 기준 내림차순으로 데이터를 정렬
-hdc_v <- arrange(hdc_v, decs(close))
+hdc_v <- arrange(hdc_v, desc(close))
 #### 결과 확인
 hdc_v
 
+hdc_v <- filter(hdc, volume > 1000000)
+hdc_v <- select(hdc_v, date, close)
+hdc_v <- arrange(hdc_v, desc(close))
+hdc_v
+
 ### 함수를 중첩해서 사용할 수도 있음.
-arrange(select(filter(hdc, volume > 1000000), date, close), desc(close))
+hdc_r <- arrange(select(filter(hdc, volume > 1000000), date, close), desc(close))
+hdc_r
 
 ### 파이프 연산자 %>%
 #### windows : ctrl + shift + m
 #### macos : commend + shift + m
 filter(hdc, volume > 1000000)
-hdc %>% filter(volume > 1000000)
+hdc %>% 
+  filter(volume > 1000000)
 
-### 
+### 현대자동차의 거래액이 100만보다 컸을 때, 종가가 가장 큰 날은?
 hdc_v <- filter(hdc, volume > 1000000)
-hdc_v <- select(hdc_v, date, close)
-hdc_v <- arrange(hdc_v, decs(close))
-hdc_v
+hdc_s <- select(hdc_v, date, close)
+hdc_a <- arrange(hdc_s, decs(close))
+hdc_a
 
+### pipe 연산자로 함수 연결
 hdc %>% 
   filter(volume > 1000000) %>% 
-  select(date, close) %>% 
-  arrange(close) -> hdc_p
+  select(date, close) %>%
+  arrange(close) -> 
+  hdc_p
+
 hdc_p
 
+
+
 ## summarize
+### summarize()는 컬럼과 함수를 사용하여 집계 데이터를 만듬.
+### 기존의 데이터 중 일부를 사용하는 것이 아니라
+### 새로운 집계 데이터를 만드는 
+### summarize(데이터, 집계컬럼명1 = 집계함수1(컬럼명1), ...) 로 사용함.
+
+hdc %>% 
+  summarize(open_avg = mean(open), 
+            vol_max = max(volume),
+            vol_min = min(volume))
+
+### 많이 사용하는 집계 함수
+
+hdc %>%
+  summarize(
+    open_avg = mean(open),
+    vol_max = max(volume),
+    vol_min = min(volume),
+    cnt = n(),
+    unique_cnt = n_distinct(open),
+    low_median = median(low),
+    close_first = first(close),
+    close_last = last(close),
+    high_sd = sd(high),
+    high_var = var(high)
+  )
+
 
 ## group_by
+### 각 연산이 해당 그룹별로 이루어지도록 그룹 정보를 저장함.
+
+### 그룹을 확인하기 위해 새로운 데이터를 만듬.
+library(dplyr)
+library(tqk)
+library(purrr)
+code_get() %>% 
+  slice(11:20) -> 
+  code_info
+
+code_info %>%
+  pull(code) %>% 
+  map_dfr(
+    ~ tqk_get(.x, from = "2017-01-01", to = "2018-12-31") %>%
+        mutate(code = .x)
+    ) %>% 
+  left_join(code_info, by = "code") -> 
+  stks 
+
+
+### stks 변수는 기업 7개의 17년~18년 데이터가 있음.
+### 기업은 code 컬럼으로 구분할 수 있음.
+stks 
+stks %>% 
+  group_by(code)
+
+stks %>% 
+  summarise(close_max = max(close),
+            close_min = min(close))
+
+stks %>% 
+  group_by(name, open) %>% 
+  summarise(close_max = max(close),
+            close_min = min(close))
+
+### ungroup()
+### 그룹이 지정된 상태에서는 기대하지 않은 동작이 있을 수 있음.
+### 그룹이 필요한 연산을 수행하고 나면 가능하면 반드시 ungroup()을 연결할 필요가 있음.
+
+stks %>% 
+  group_by(code)
+
+stks %>% 
+  group_by(code) %>% 
+  ungroup()
 
 ## mutate
+### 각 컬럼을 활용하여 계산한 결과물로 새로운 컬럼을 작성함.
+### mutate(데이터, 새컬럼명1 = 계산함수1(컬럼명1), ...) 로 사용함.
+### 산술 연산, log(), round() 등 변환 함수를 많이 적용함.
+### 계산으로 새로운 컬럼을 만들거나, 소수점을 정리하거나, 자료형을 변환하는 등에 사용.
+stks %>% 
+  mutate(rate = open / close)
+
+stks %>% 
+  mutate(rate = open / close,
+### min_rank 함수는 순위를 오름차순으로 작성해줌.
+### 같은 값이 많으면 작은 순위로 작성함.
+         rate_rank = min_rank(rate),
+### desc() 함수로 내림차순 순위를 작성할 수 있음.
+         rate_desc_rank = min_rank(desc(rate)))
+
+stks %>% 
+  mutate(
+    rate = open / close,
+    rate_rank = min_rank(rate),
+    rate_desc_rank = min_rank(desc(rate))
+  ) %>% 
+  filter(rate_rank == 1)
+
+
+### lead(), lag()로 새로운 컬럼 생성
+### lead()는 컬럼 방향으로 데이터를 당겨서, lag()는 밀어서 컬럼을 만들어 줌.
+### 미는 갯수도 조절할 수 있으며 기본값은 1.
+stks %>% 
+  # group_by(code) %>% 
+  mutate(open_lead = lead(open),
+         open_lag  = lag(open)) %>% 
+  select(code, open, open_lead, open_lag) %>% 
+  filter(is.na(open_lag))
+
+### 누적 집계 함수들
+### cumulative aggregates라고 함
+### row를 순서대로 누적하여 합계, 최대값 등을 계산하여 처리함.
+
+stks %>%
+  mutate(
+    open_cmax = cummax(open),
+    open_cmin = cummin(open),
+    open_cmean = cummean(open),
+    open_csum = cumsum(open),
+    open_cprod = cumprod(open)
+  ) %>%
+  select(open, 
+         open_cmax, 
+         open_cmean,
+         open_cmin, 
+         open_csum, 
+         open_cprod)
+
+### transmute() 함수는 계산한 컬럼만 남겨줌.
+### mutate() %>% select() => transmute()
+
+stks %>%
+  transmute(
+    open = open,
+    open_cmax = cummax(open),
+    open_cmean = cummean(open),
+    open_cmin = cummin(open),
+    open_csum = cumsum(open),
+    open_cprod = cumprod(open)
+  ) -> tran
+
+stks %>%
+  mutate(
+    open_cmax = cummax(open),
+    open_cmin = cummin(open),
+    open_cmean = cummean(open),
+    open_csum = cumsum(open),
+    open_cprod = cumprod(open)
+  ) %>%
+  select(
+    open,
+    open_cmax,
+    open_cmean,
+    open_cmin,
+    open_csum,
+    open_cprod
+  ) -> mps
+
+identical(mps, tran)
+
+
+
+## group_by(), summerize(), mutate() 실습
+### 날짜 데이터를 다루는 libridate 패키지
+library(lubridate)
+
+### 날짜 자료형에서 년, 월, 일 데이터를 추출하는 함수
+### 이름대로 year(), month(), day() 함수를 제공
+stks %>% 
+  transmute(
+    date = date,
+    year = year(date),
+    month = month(date),
+    day = day(date)
+  )
+
+stks %>% 
+  mutate(
+    date = date,
+    year = year(date),
+    month = month(date),
+    day = day(date)
+  ) -> 
+  stks_d
+
+## 그럼 년도별, 기업별 거래액 합계는 각각 얼마일까?
+
+stks_d %>% 
+  group_by(year, name) %>% 
+  summarise(total_vol = sum(volume))
+
+
+## 18년의 월별 기업별 종가 최소값은 얼마일까?
+
+stks_d %>% 
+  filter(year == 2018) %>% 
+  group_by(month, name) %>% 
+  summarise(minc = min(close))
+
+## 17년의 월별 기업별 고가가 3등(min_rank 기준)인 날은 언제일까?
+
+stks_d %>% 
+  filter(year == 2017) %>% 
+  group_by(month, name) %>% 
+  mutate(rank = min_rank(high)) %>% 
+  ungroup() %>% 
+  filter(rank == 3)
+
+stks_d %>% 
+  filter(year == 2017) %>% 
+  group_by(month, name) %>% 
+  mutate(rank = min_rank(high)) %>% 
+  filter(rank == 3)
