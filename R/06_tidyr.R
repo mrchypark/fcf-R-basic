@@ -83,3 +83,68 @@ stks18 %>%
   group_by(name, month) %>% 
   summarise(mclose = mean(close)) %>% 
   spread(month, mclose)
+
+
+## tidyr 패키지의 separate() 함수 실습
+### 데이터 준비
+library(readr)
+url <- "https://github.com/mrchypark/sejongFinData/raw/master/dataAll.csv"
+download.file(url,destfile = "./dataAll.csv")
+findata <- 
+  read_csv("./dataAll.csv", locale = locale(encoding = "cp949")) %>% 
+  rename(company = country)
+
+findata %>% 
+  select(company, year) -> 
+  findata
+
+### year 컬럼을 separate() 함수로 별도의 컬럼들로 나눔
+### sep 에 [^[:alnum:]]+ 정규표현식이 기본값으로 있어서 
+### 글자, 숫자가 아닌 값으로 나누기를 제공
+findata %>% 
+  separate(year, into = c("year","month","standard")) 
+
+### convert 옵션으로 자료형을 처리할 수 있음
+findata %>% 
+  separate(year, into = c("year","month","standard"), convert = T)
+
+### 직접 sep에 나누기를 할 글자를 지정할 수 있음
+### 정규표현식에서 "(" 괄호는 특별한 의미를 지니기 때문에
+### \\ 이후에 작성해야 글자로 인식함.
+findata %>% 
+  separate(year, into = c("year","standard"), sep = "\\(")
+
+### sep에 숫자를 넣을 수도 있는데, 글자 갯수를 기준으로 나누어 줌
+findata %>% 
+  separate(year, into = c("year","month","standard")) %>% 
+  separate(standard, into = c("standard","Consolidated"), sep = 4)
+
+
+## tidyr 패키지의 unite() 함수 실습
+library(tqk)
+code_info <- code_get()
+code_info
+
+### code와 name이 같은 의미를 지니므로 하나로 합칠 수 있음.
+### 물론 실제로는 code가 key 역할이나 tqk_get() 함수의 입력 역할을 하기 때문에
+### 최종 결과물에서 정리의 의미로 하나로 합치거나 하는 것이라고 가정.
+
+### 여러 컬럼의 데이터를 합쳐서 하나의 컬럼으로 만드는 동작
+### 새롭게 만들어지는 컬럼 이름을 먼저 작성
+### 이후 대상이 되는 컬럼 이름을 나열.
+code_info %>% 
+  unite("company", name, code)
+
+### sep 옵션으로 어떤 글자를 이용하여 연결할지 결정.
+### 기본값은 _(언더바)
+code_info %>% 
+  unite("company", name, code, sep = "-")
+
+### 개인적으로는 mutate() 함수와 paste0() 함수를 함께 사용하는 편.
+### paste0() 함수는 글자를 합치는 기능을 제공.
+code_info %>% 
+  mutate(company = paste0(name, "(",code,")"))
+
+### transmute() 함수로 필요한 컬럼만 출력
+code_info %>% 
+  transmute(company = paste0(name, "(",code,")"), market)
