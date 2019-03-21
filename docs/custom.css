@@ -134,6 +134,10 @@ code codep {font-family: 'D2 coding', monospace;}
 
 .point .remark-code { color: #F0234B; }
 
+.footnote{
+  margin-left: 2em;
+}
+
 .codep {}
 
 .remark-inline-code{

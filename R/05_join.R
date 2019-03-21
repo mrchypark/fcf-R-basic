@@ -5,4 +5,11 @@
 #                                    #
 
 # tidy한 방법으로 데이터 다루기
-## 
+## 관계형 데이터를 다루기
+
+## 사용할 데이터 소개
+library(remotes)
+install_github("mrchypark/marcapkor")
+
+library(marcapkor)
+data2017 <- mck_get(2017)
