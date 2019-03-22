@@ -18,7 +18,7 @@ class: title-slide
 
 #### 00
 ### 파일을 불러오는 readr
-## 데이터 불러오기 read_*()
+## 엑셀 파일 불러오기, 저장하기
 
 ---
 class: end-slide

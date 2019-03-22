@@ -18,7 +18,7 @@ class: title-slide
 
 #### 00
 ### 파일을 불러오는 readr
-## 데이터 불러오기 read_*()
+## 다양한 데이터 불러오기 rio
 
 ---
 class: end-slide
