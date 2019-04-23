@@ -5,6 +5,16 @@
 #                                    #
 
 # 날짜와 시간을 다루는 lubridate
-## 실습 데이터 준비 
+
+## 날짜 자료형 <date>
+## 시간 자료형 <time> - hms 패키지가 추가로 필요
+## 날짜시간 자료형 <dttm>
+
 
 library(lubridate)
+
+##
+
+wifi %>% 
+  select(설치년월, 데이터기준일자) -> 
+  lub_exam
