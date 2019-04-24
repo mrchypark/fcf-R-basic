@@ -17,18 +17,8 @@ output:
 class: title-slide
 
 #### 00
-### 단정한 데이터 tidyr
-## tidyr 패키지 unite() 함수
-
----
-class: content-slide
-
-```{r}
-library(htmltools)
-library(formatR)
-library(highr)
-HTML(hi_html(usage(glm, output = F)))
-```
+### 관계형 데이터를 다루기
+## 변수 추가 : mutating join
 
 ---
 class: end-slide

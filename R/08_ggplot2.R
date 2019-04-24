@@ -4,14 +4,21 @@
 #    R 프로그래밍 - 강사. 박찬엽     #
 #                                    #
 
-# 단정한 데이터 tidyr
-## 실습 데이터 준비 
+# 차트를 그리는 ggplot2
+## 실습 데이터 소개
+
+if (!require("gapminder")) {install.packages("gapminder")}
+library(gapminder)
+library(dplyr)
+
+glimpse(gapminder)
 
 library(ggplot2)
-ggplot(data = mpg) + 
-  geom_point(aes(displ, hwy, 
-                 colour = class))
+ggplot(data = gapminder) + 
+  geom_point(aes(x = gdpPercap, y = lifeExp,
+                 colour = continent))
 
+## ggplot 객체와 계층 추가하기
 ## 용어 설명
 
 # 기하 객체(geometric object) : 차트를 구성할 수 있는 그림의 형태들. bar, dot, line 등이 있음. geom_*() 형태의 함수로 layer를 구성함.
@@ -20,16 +27,10 @@ ggplot(data = mpg) +
 # ggplot 자료형 : ggplot()함수로 생성하는 R 객체로 그림을 그리기 위한 정보를 포함하고 있음.
 # 계층(layer) : 제공된 데이터와 연결 정보를 바탕으로 그려진 그림. + 연산자를 통해 계층을 추가하여 겹쳐서 그리는 것이 가능.
 # `+` 연산자 : 계층을 추가할 때 데이터와 연결 정보, 지금까지 작성된 계층 정보를 전달하는 연산자. 파이프 연산자(`%>%`)와 비슷함.
-# 좌표계(coordinate system) : 대표적인 x-y 좌표계를 사용하며 극좌표계(polar) 등으로 파이차트를 작성할 수 있음.
 # 축척(scale) : 데이터를 표시하는 방식으로 연속형 자료형에서 고려함.
 
-
-if (!require("gapminder")) {install.packages("gapminder")}
-library(gapminder)
-
 ## ggplot 객체 생성
-p <- ggplot(gapminder, 
-           aes(x = gdpPercap, y = lifeExp))
+p <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
 p
 summary(p)
 

@@ -23,14 +23,13 @@ glimpse(airlines)
 glimpse(planes)
 
 ## 각 테이블을 연결하는 변수 key
-## 기본키: 테이블의 개별 행(row)을 유일하게 인식할 수 있는 열(column) 혹은 열의 집합
-## 왜래키: 다른 테이블의 기본키와 같은 의미를 지니는 열(column) 혹은 열의 집합
+# 기본키: 테이블의 개별 행(row)을 유일하게 인식할 수 있는 열(column) 혹은 열의 집합
+# 왜래키: 다른 테이블의 기본키와 같은 의미를 지니는 열(column) 혹은 열의 집합
 
 ## 기본키임을 확인
 planes %>% 
   count(tailnum) %>% 
-  filter(n > 1) %>% 
-  nrow()
+  filter(n > 1) 
 
 ## n > 1인 데이터가 있으므로 기본키로 활용하는데 제약이 있음
 weather %>% 
@@ -39,7 +38,7 @@ weather %>%
 
 ## 기본키 조합을 상상하더라도 확인이 꼭 필요
 flights %>% 
-  count(year, month, day, flight) %>% 
+  count(year, month, day, hour, origin, dest, tailnum) %>% 
   filter(n > 1)
 
 
@@ -66,15 +65,24 @@ flights2 %>%
 flights2 %>% 
   left_join(planes, by = "tailnum")
 
+flights2 %>% 
+  left_join(airports %>% 
+              rename(origin = faa) %>% 
+              select(origin, name, tzone))
+
+flights2 %>% 
+  left_join(airports, 
+            by = c("origin" = "faa"))
+
 ## 필요한 데이터만 남기는 filtering join
-# tar <- "https://d33wubrfki0l68.cloudfront.net/028065a7f353a932d70d2dfc82bc5c5966f768ad/85a30/diagrams/join-semi.png"
-# download.file(tar, destfile = "semi.png", mode = "wb")
+tar <- "https://d33wubrfki0l68.cloudfront.net/028065a7f353a932d70d2dfc82bc5c5966f768ad/85a30/diagrams/join-semi.png"
+download.file(tar, destfile = "semi.png", mode = "wb")
 grid::grid.raster(png::readPNG("semi.png"))
-# tar <- "https://d33wubrfki0l68.cloudfront.net/e1d0283160251afaeca35cba216736eb995fee00/1b3cd/diagrams/join-semi-many.png"
-# download.file(tar, destfile = "semi-many.png", mode = "wb")
+tar <- "https://d33wubrfki0l68.cloudfront.net/e1d0283160251afaeca35cba216736eb995fee00/1b3cd/diagrams/join-semi-many.png"
+download.file(tar, destfile = "semi-many.png", mode = "wb")
 grid::grid.raster(png::readPNG("semi-many.png"))
-# tar <- "https://d33wubrfki0l68.cloudfront.net/f29a85efd53a079cc84c14ba4ba6894e238c3759/c1408/diagrams/join-anti.png"
-# download.file(tar, destfile = "anti.png", mode = "wb")
+tar <- "https://d33wubrfki0l68.cloudfront.net/f29a85efd53a079cc84c14ba4ba6894e238c3759/c1408/diagrams/join-anti.png"
+download.file(tar, destfile = "anti.png", mode = "wb")
 grid::grid.raster(png::readPNG("anti.png"))
 
 

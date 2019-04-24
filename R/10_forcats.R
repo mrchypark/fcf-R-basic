@@ -8,6 +8,7 @@
 ## 실습 데이터 준비 
 
 library(forcats)
+library(dplyr)
 library(krwifi)
 
 wifi %>% 
@@ -45,9 +46,9 @@ wifi_f %>%
 ## 빈도가 많은 순
 wifi_f %>%
   mutate(class_l = class %>% fct_infreq()) %>% 
-  with(levels(class_l))
+  count(class_l)
 
 ## 기존의 역순
 wifi_f %>%
-  mutate(class_r = class %>% fct_rev()) %>% 
+  mutate(class_r = class %>% fct_infreq() %>% fct_rev()) %>% 
   with(levels(class_r))
