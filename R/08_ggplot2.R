@@ -39,15 +39,6 @@ p_point <- p + geom_point()
 p_point
 summary(p_point)
 
-## 축적(scale) 바꾸기
-ggplot(gapminder) +
-  geom_point(aes(x = log10(gdpPercap),
-                 y = lifeExp))
-
-p_point_log10 <- p_point + scale_x_log10()
-p_point_log10
-
-
 ## aes에서 많이 사용하는 입력값
 # x: x-y 좌표계에서 x축으로 표시할 데이터
 # y: x-y 좌표계에서 y축으로 표시할 데이터
@@ -60,6 +51,14 @@ p_point_color <- p +
     geom_point(aes(color = continent))
 p_point_color
 
+## 축적(scale) 바꾸기
+ggplot(gapminder) +
+  geom_point(aes(x = log10(gdpPercap),
+                 y = lifeExp))
+
+p_point_log10 <- p_point + scale_x_log10()
+p_point_log10
+
 summary(p_point_color)
 
 ## 추세선 추가
@@ -68,6 +67,13 @@ p_point + stat_smooth()
 p_point + geom_smooth(lwd = 2, 
                       se = FALSE, 
                       method = "lm")
+
+## 여러 차트 그리기
+lp <- ggplot(gapminder) + 
+  geom_jitter(aes(x = year, y = lifeExp ))
+lp
+
+lp + facet_wrap(~ continent)
 
 
 
@@ -93,12 +99,7 @@ ggplot(gapminder) +
   geom_smooth(lwd = 1, se = FALSE,
               aes(color = continent) )
 
-## 여러 차트 그리기
-lp <- ggplot(gapminder) + 
-    geom_jitter(aes(x = year, y = lifeExp ))
-lp
 
-lp + facet_wrap(~ continent)
 
 
 ## 차트 저장하기
@@ -117,19 +118,16 @@ for (i in 1:length(unique(gapminder$country))) {
 
 
 
-## 움직이는 차트를 그리는 gganimate
-install.packages("gifski")
-install.packages("gganimate")
-library(gganimate)
-ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
-  geom_point(alpha = 0.7, show.legend = FALSE) +
-  scale_colour_manual(values = country_colors) +
-  scale_size(range = c(2, 12)) +
-  scale_x_log10() +
-  facet_wrap(~continent) +
 
-  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
-  transition_time(year) +
-  ease_aes('linear')
+## 글자 폰트를 다루는 showtext
 
-
+library(showtext)
+font_add_google("Cute Font", "cute")
+showtext_auto()
+windows()
+ggplot(data = mpg) + 
+  geom_point(aes(displ, hwy, 
+                 colour = class)) +
+  ggtitle("한글 테스트도 겸", ) + 
+  theme(plot.title = element_text(family = "cute", 
+                                  size = 30))
