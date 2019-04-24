@@ -1,0 +1,24 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+class: title-slide
+
+#### 00
+### 차트 그리기 ggplot2
+## 차트를 수정하는 방법
+
+---
+class: end-slide

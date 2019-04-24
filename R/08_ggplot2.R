@@ -39,7 +39,9 @@ p_point <- p + geom_point()
 p_point
 summary(p_point)
 
-## aes에서 많이 사용하는 입력값
+
+## aes()로 데이터 연결하기
+## 많이 사용하는 입력값
 # x: x-y 좌표계에서 x축으로 표시할 데이터
 # y: x-y 좌표계에서 y축으로 표시할 데이터
 # color: 색 정보로써 각 기하 객체가 가질 색을 구분하는데 사용함.
@@ -103,11 +105,11 @@ ggplot(gapminder) +
 
 
 ## 차트 저장하기
-dir.create("../ggsave", showWarnings = F)
-ggsave("../ggsave/last.png")
+dir.create("./ggsave", showWarnings = F)
+ggsave("./ggsave/last.png")
 
 ## 여러 차트 저장하기
-dir.create("../ggsave", showWarnings = F)
+dir.create("./ggsave", showWarnings = F)
 for (i in 1:length(unique(gapminder$country))) {
   gapminder %>% 
     filter(country == gapminder$country[i]) %>%
@@ -131,3 +133,5 @@ ggplot(data = mpg) +
   ggtitle("한글 테스트도 겸", ) + 
   theme(plot.title = element_text(family = "cute", 
                                   size = 30))
+
+ggsave("./ggsave/last.png")
