@@ -110,6 +110,10 @@ wifi %>%
   summarise(n = n()) %>% 
   arrange(desc(n))
 
+wifi %>% 
+  filter(str_starts(설치장소상세 , "민원")) %>% 
+  count(설치장소상세, sort = T)
+
 
 ## 필요없는 공백 제거
 

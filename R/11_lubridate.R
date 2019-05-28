@@ -59,7 +59,7 @@ x <- c(20100101120101,
        "Created on 10-01-11 at 10:01:11 PM")
 ymd_hms(x)
 
-ymd("2017년 1월 4일")
+ymd_hm("2017년 1월 4일 14시 30분")
 
 ## 실습
 ## 데이터 준비
@@ -96,7 +96,7 @@ lub_exam %>%
 
 lub_exam %>% 
   filter(!is.na(설치년월)) %>% 
-  mutate(ym_try = parse_date_time(설치년월, c("ym", "my")))
+  mutate(ym_try = parse_date_time(설치년월, c("ym", "y")))
 
 lub_exam %>% 
   filter(!is.na(설치년월)) %>% 
@@ -114,7 +114,7 @@ year() month() day() quarter()
 week() mday() wday() qday() yday()
 hour() minute() second()
 
-sam_dttm <- Sys.time()
+sam_dttm <- ymd_hms("2018-02-11 12:33:34")
 sam_dttm
 year(sam_dttm)
 month(sam_dttm)

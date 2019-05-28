@@ -1,0 +1,24 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+class: title-slide
+
+#### 00
+### 텍스트 데이터를 다루는 stringr
+## mutate()와 함께 사용
+
+---
+class: end-slide
