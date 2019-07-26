@@ -1,0 +1,25 @@
+---
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r load_setup, child="setup.Rmd"}
+```
+
+class: title-slide
+
+#### 00
+### 데이터 베이스 DBI + dplyr
+## DB에 연결하고 queary 작성
+
+
+---
+class: end-slide

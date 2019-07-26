@@ -7,7 +7,7 @@
 # 날짜와 시간을 다루는 lubridate
 
 ## 날짜 자료형 <date>
-## 날짜시간 자료형 <dttm>
+## 날짜시간 자료형 <dttm> 
 ## 시간 자료형 <time> - hms 패키지가 추가로 필요
 
 ## 시간 자료형 
@@ -60,6 +60,8 @@ x <- c(20100101120101,
 ymd_hms(x)
 
 ymd_hm("2017년 1월 4일 14시 30분")
+ymd_hm("2017년 1월 4일 2시 30분 오후")
+
 
 ## 실습
 ## 데이터 준비
@@ -74,7 +76,7 @@ wifi %>%
 ## ymd 함수 실습
 
 lub_exam %>% 
-  transmute(ymd_try = ymd(데이터기준일자))
+  mutate(ymd_try = ymd(데이터기준일자))
 
 lub_exam %>% 
   transmute(ymd_try = ymd(데이터기준일자)) %>% 
@@ -100,13 +102,8 @@ lub_exam %>%
 
 lub_exam %>% 
   filter(!is.na(설치년월)) %>% 
-  mutate(ym_try = parse_date_time(설치년월, c("ym", "my"))) %>% 
+  mutate(ym_try = parse_date_time(설치년월, c("ym", "y"))) %>% 
   filter(is.na(ym_try))
-
-lub_exam %>% 
-  filter(!is.na(설치년월)) %>% 
-  mutate(ym_try = parse_date_time(설치년월, c("ym", "my","y")))
-
 
 
 ## 날짜시간 자료형으로 부터 데이터 추출
